@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>SegundoParcialAngular</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<div>
+    <label>Datos personales:</label>
+
+    <div>
+        <label>Nombre:</label>
+        <input type="text" [(ngModel)]="nombre" class="datos">
+    </div>
+
+    <div>
+        <label>Apellido Paterno:</label>
+        <input type="text" [(ngModel)]="aPaterno" class="datos">
+    </div>
+
+    <div>
+        <label>Apellido Materno:</label>
+        <input type="text" [(ngModel)]="aMaterno" class="datos">
+    </div>
+
+    <div>
+        <label>Fecha nacimiento</label>
+
+        <label>Día</label>
+        <input type="number" [(ngModel)]="dia">
+
+        <label>Mes</label>
+        <input type="number" [(ngModel)]="mes">
+
+        <label>Año</label>
+        <input type="number" [(ngModel)]="anio">
+    </div>
+
+    <div>
+        <label>Sexo</label>
+
+        <input type="radio" name="sexo" value="Masculino" [(ngModel)]="sexo"> Masculino
+
+        <input type="radio" name="sexo" value="Femenino" [(ngModel)]="sexo">Femenino
+    </div>
+
+    <button (click)="imprimir()" class="btn btn-primary">Imprimir</button>
+
+    <div>
+        <p>Hola {{nombre}} {{aPaterno}} {{aMaterno}}</p>
+
+        <p>Tienes {{edad}} años</p>
+
+        <p>Tu signo zodiacal chino es: {{signoNombre}}</p>
+
+        <img *ngIf="signoImagen" [src]="signoImagen" [alt]="signoNombre" width="200" >
+    </div>
+</div>
+
+
+</body>
+</html>
