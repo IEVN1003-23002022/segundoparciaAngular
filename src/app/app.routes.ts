@@ -23,11 +23,29 @@ export const routes: Routes = [
                     
             },
 
-            {
-                path: 'escuela',
+
+        ]
+
+    },
+
+
+    {
+        path: 'escuela',
+        children:[
+                    {
+                path: 'lista-escuela',
                 loadComponent:()=>
                     import('./escuela/lista-escuela/lista-escuela').then(
                         (c)=>c.ListaEscuela
+                    ),
+                    
+            },
+
+            {
+                path: 'cinepolis',
+                loadComponent:()=>
+                    import('./escuela/cinepolis/cinepolis').then(
+                        (c)=>c.Cinepolis
                     ),
                     
             }

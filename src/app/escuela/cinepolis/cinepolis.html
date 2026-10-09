@@ -6,18 +6,18 @@
  
   <form [formGroup]="formulario">
  
-    <!-- matricula -->
+    <!-- nombre -->
     <div class="mb-5">
  
       <label
         for="matricula"
         class="block mb-2 text-sm font-medium text-gray-900"
       >
-        Matricula
+        Nombre
       </label>
 
       <input
-        type="text" formControlName="matricula"
+        type="text" formControlName="nombre"
         id="matriucla"
         required
         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
@@ -27,23 +27,23 @@
       <br>
 
  
-    <!-- nombre -->
+    <!-- cantidad compradores -->
 
       <label
         for="name"
         class="block mb-2 text-sm font-medium text-gray-900"
       >
-        Nombre
+        Cantidad compradores
       </label>
 
       <input
-        type="text" formControlName="nombre"
+        type="number" formControlName="nombre"
         id="name"
         name="name"
         required
         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
          focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-        placeholder="Nombre"
+        placeholder="Cantidad compradores"
       >
       
  
@@ -97,7 +97,7 @@
         Cargar
         </button>
 
-        <button (click)="muestraAlumno()" type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none 
+        <button  type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none 
         focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 disabled:opacity-50 disabled:cursor-not-allowed">
         Registrar
         </button>
@@ -105,11 +105,6 @@
  </div>
 
  <div>
-    <h2 class="mb-4 text-2x1 font-bold text-gray-900">Lista de alumnos</h2>
-    <h3>Matricula:{{nuevoAlumno.matricula}}</h3>
-    <h3>Nombre:{{nuevoAlumno.nombre}}</h3>
-    <h3>Correo:{{nuevoAlumno.correo}}</h3>
-    <h3>Materia:{{nuevoAlumno.materia}}</h3>
  </div>
  
  
