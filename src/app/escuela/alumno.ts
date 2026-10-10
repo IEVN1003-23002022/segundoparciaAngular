@@ -5,9 +5,9 @@ export interface IAlumno {
     materia:string
 }
 
-export interface ICinepolis{
-    nombre:string,
-    cantidadCompradores:number,
-    tarjeta:boolean,
-    cantidadBoletos:number
+export interface ICinepolis {
+  nombre: string,
+  cantidadCompradores: number,
+  tarjeta: boolean,
+  cantidadBoletos: number,
 }

@@ -1,116 +1,125 @@
-<div class="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow">
- 
-  <h1 class="text-3xl font-bold text-gray-900 mb-6">
-    Contact form
-  </h1>
- 
-  <form [formGroup]="formulario">
- 
-    <!-- nombre -->
-    <div class="mb-5">
- 
-      <label
-        for="matricula"
-        class="block mb-2 text-sm font-medium text-gray-900"
-      >
-        Nombre
-      </label>
 
-      <input
-        type="text" formControlName="nombre"
-        id="matriucla"
-        required
-        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
-         focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-        placeholder="Matricula"
-      >
+<div class="max-w-5xl mx-auto p-6 bg-white rounded-lg shadow">
+
+  <h1 class="text-3xl font-bold text-gray-900 mb-6 text-center">
+    Cinepolis
+  </h1>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+    <div class="p-5 bg-gray-50 rounded-lg">
+
+      <h2 class="text-xl font-bold text-gray-900 mb-5">
+        Entradas
+      </h2>
+
+      <form [formGroup]="formulario">
+
+        <div class="mb-5">
+          <label class="block mb-2 text-sm font-medium text-gray-900"> Nombre </label>
+
+          <input
+            type="text"
+            formControlName="nombre"
+            class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg
+            focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+            placeholder="Nombre">
+        </div>
+
+        <div class="mb-5">
+          <label class="block mb-2 text-sm font-medium text-gray-900"> Cantidad compradores </label>
+
+          <input
+            type="number"
+            formControlName="cantidadCompradores"
+            min="1"
+            class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg
+            focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+            placeholder="Cantidad compradores">
+        </div>
+
+        <div class="mb-5">
+          <label class="block mb-2 text-sm font-medium text-gray-900"> Tarjeta Cineco </label>
+
+          <label>
+            <input
+              type="radio"
+              formControlName="tarjeta" 
+              [value]="true">
+            Si
+          </label>
+
+          <label class="ml-4">
+            <input
+              type="radio"
+              formControlName="tarjeta"
+              [value]="false">
+            No </label>
+        </div>
+
+        <div class="mb-5">
+          <label class="block mb-2 text-sm font-medium text-gray-900"> Cantidad de boletos </label>
+
+          <input
+            type="number"
+            formControlName="cantidadBoletos"
+            min="1"
+            class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg
+            focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+            placeholder="Cantidad de boletos">
+        </div>
+
+
+          <div class="flex  gap-6">
+
+            <button
+              (click)="calcular()"
+              type="button"
+              class="text-white bg-blue-700 hover:bg-blue-800
+              focus:ring-4 focus:outline-none focus:ring-blue-300
+              font-medium rounded-lg text-sm px-5 py-2.5">
+              Procesar </button>
+
+            <button
+              (click)="salir()"
+              type="button"
+              class="text-white bg-blue-700 hover:bg-blue-800
+              focus:ring-4 focus:outline-none focus:ring-blue-300
+              font-medium rounded-lg text-sm px-5 py-2.5">
+              Salir </button>
+
+          </div>
+
+
+      </form>
+
+    </div>
+
+
+    <div class="p-5 bg-gray-50 rounded-lg">
+
+      <h2 class="text-xl font-bold text-gray-900 mb-5"> Salida</h2>
       <br>
 
- 
-    <!-- cantidad compradores -->
+      <div class="mb-5">
 
-      <label
-        for="name"
-        class="block mb-2 text-sm font-medium text-gray-900"
-      >
-        Cantidad compradores
-      </label>
+        <h2 class="block mb-2 text-sm font-medium text-gray-900"> Comprador: {{compraCine.nombre}} </h2>
+        <br>
 
-      <input
-        type="number" formControlName="nombre"
-        id="name"
-        name="name"
-        required
-        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
-         focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-        placeholder="Cantidad compradores"
-      >
+        <label class="block mb-2 text-sm font-medium text-gray-900"> Total a pagar </label>
+    
+        <h2 class="text-2xl font-bold text-blue-700"> ${{ total }}</h2>
+
+      </div>
+
+      <div class="mt-5">
+  
+          <h3 class="text-red-600 font-medium"> {{ aviso }} </h3>
       
- 
+      </div>
+
     </div>
- 
 
-    <!-- correo -->
+  </div>
 
-
-    <label
-        for="correo"
-        class="block mb-2 text-sm font-medium text-gray-900"
-      >
-        Correo
-      </label>
-
-      <input
-        type="text" formControlName="correo"
-        id="materia"
-        name="materia" 
-        required
-        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
-         focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-        placeholder="Correo"
-      >
- 
-    <!-- materia -->
-
-     <label
-        for="Materia"
-        class="block mb-2 text-sm font-medium text-gray-900"
-      >
-        Materia
-      </label>
-
-      <input type="text" formControlName="materia" id="materia" name="materia"
-        required class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
-         focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Materia">
-
-
-         
-
-
-<br>
-<div>
-        <button 
-        type="submit" class="text-white bg-blue-700 hover:bg-blue-800
-        focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 
-        disabled:opacity-50 disabled:cursor-not-allowed"
-        >
-        Cargar
-        </button>
-
-        <button  type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none 
-        focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 disabled:opacity-50 disabled:cursor-not-allowed">
-        Registrar
-        </button>
- 
- </div>
-
- <div>
- </div>
- 
- 
-
- 
-
-  </form>
- 
 </div>

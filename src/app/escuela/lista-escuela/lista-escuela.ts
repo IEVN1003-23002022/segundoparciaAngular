@@ -1,25 +1,27 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {IAlumno} from '../alumno'
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-lista-escuela',
-  imports: [FormsModule, ReactiveFormsModule],
+  imports: [FormsModule, ReactiveFormsModule, CommonModule],
   templateUrl: './lista-escuela.html',
   styleUrl: './lista-escuela.css',
 })
 export class ListaEscuela {
 formulario!:FormGroup
+  alumnos: IAlumno[] = [];
 
 nuevoAlumno:IAlumno={
-  matricula:'xxx',
-  nombre:'xxx',
-  correo:'xx',
-  materia:'xx'
+  matricula:'',
+  nombre:'',
+  correo:'',
+  materia:''
 }
 
   ngOnInit():void{
-
+      this.cargarAlumnos()
       this.formulario=new FormGroup({
         matricula:new FormControl(''),
         nombre:new FormControl(''),
@@ -28,11 +30,39 @@ nuevoAlumno:IAlumno={
       })
       }
 
+
+  agregarAlumno():void{
+    if(
+    this.nuevoAlumno.matricula === ''  ||
+    this.nuevoAlumno.nombre === '' ||
+    this.nuevoAlumno.correo === '' ||
+    this.nuevoAlumno.materia === ''
+  ){
+    alert('Todos los campos son obligatorios');
+    return;
+    }
+    this.alumnos.push({...this.nuevoAlumno})
+
+    localStorage.setItem(
+      'alumnos',
+      JSON.stringify(this.alumnos)
+    )
+  }
+
   muestraAlumno():void{
     this.nuevoAlumno.matricula=this.formulario.value.matricula
     this.nuevoAlumno.nombre=this.formulario.value.nombre
     this.nuevoAlumno.correo=this.formulario.value.correo
     this.nuevoAlumno.materia=this.formulario.value.materia
+    this.agregarAlumno()
+  }
+
+  cargarAlumnos():void{
+    const datos = localStorage.getItem('alumnos');
+
+    if(datos){
+      this.alumnos = JSON.parse(datos);
+    }
   }
    
 
