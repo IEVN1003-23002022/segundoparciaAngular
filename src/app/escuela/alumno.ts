@@ -5,6 +5,7 @@ export interface IAlumno {
     materia:string
 }
 
+
 export interface ICinepolis {
   nombre: string,
   cantidadCompradores: number,

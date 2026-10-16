@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
 export class ListaEscuela {
 formulario!:FormGroup
   alumnos: IAlumno[] = [];
+  indiceEdicion: number = -1;
 
 nuevoAlumno:IAlumno={
   matricula:'',
@@ -40,8 +41,14 @@ nuevoAlumno:IAlumno={
   ){
     alert('Todos los campos son obligatorios');
     return;
-    }
+  }
+    if(this.indiceEdicion !==-10){
+      this.alumnos[this.indiceEdicion]={
+        ...this.nuevoAlumno
+      }
+    }else{
     this.alumnos.push({...this.nuevoAlumno})
+    }
 
     localStorage.setItem(
       'alumnos',
@@ -64,7 +71,44 @@ nuevoAlumno:IAlumno={
       this.alumnos = JSON.parse(datos);
     }
   }
+
+  editarAlumno(index:number):void{
+    this.nuevoAlumno={
+      ...this.alumnos[index]
+    }
+    const alumno=this.alumnos[index]
+    this.formulario.patchValue({
+      matricula:alumno.matricula,
+      nombre:alumno.nombre,
+      correo:alumno.correo,
+      materia:alumno.materia
+    })
+    this.indiceEdicion=index
+  }
+
+  eliminarAlumno(index:number):void{
+    this.alumnos.splice(index,1)
+    localStorage.setItem(
+      'alumnos'
+      ,JSON.stringify(this.alumnos)
+    )
+  }
    
+limpiarCampos():void{
+  this.nuevoAlumno = {
+    matricula:'',
+    nombre: '',
+    correo: '',
+    materia: ''
+  }
+  this.formulario.patchValue({
+    matricula: this.nuevoAlumno.matricula,
+    nombre: this.nuevoAlumno.nombre,
+    correo: this.nuevoAlumno.correo,
+    materia: this.nuevoAlumno.materia
+  })
+  this.indiceEdicion=-1
+}
 
 
 }
